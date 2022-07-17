@@ -1,5 +1,11 @@
+import './app.css';
+
 function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <div className="app-container">
+      <button className="button">Hello World</button>
+    </div>
+  );
 }
 
 export default App;

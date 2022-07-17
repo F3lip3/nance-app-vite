@@ -36,16 +36,8 @@
         "caughtErrorsIgnorePattern": "^_"
       }
     ],
-
+    "no-undef": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
-
-    // "prettier/prettier": [
-    //   "warn",
-    //   {
-    //     "endOfLine": "auto"
-    //     // "singleQuote": true
-    //   }
-    // ]
   }
 }
