@@ -12,19 +12,19 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      background: '#565658',
-      fields: '#0f1011',
+      background: '#1e2023',
+      fields: '#121415',
       sidemenu: '#040405',
       primary: '#0F484F',
-      secondary: '#08D8B7',
-      foreground: '#F9F9F9',
+      secondary: '#3febc9',
+      foreground: '#f6f6f8',
 
-      blue: '#246eb7',
-      gray: '#9A9DA1',
+      blue: '#2483c4',
+      gray: '#696a6c',
       green: '#4C7b54',
-      orange: '#e84f2a',
-      purple100: '#6f58cd',
-      purple200: '#5426e9',
+      orange: '#dd5f1e',
+      purple100: '#806dd2',
+      purple200: '#6746ed',
 
       gray100: 'hsl(206, 20%, 98.8%)',
       gray200: 'hsl(206, 14%, 96.0%)',

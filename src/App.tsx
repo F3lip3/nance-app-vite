@@ -1,7 +1,11 @@
+import { globalStyles } from '~/global/styles/globalStyles';
+
 export const App = () => {
+  globalStyles();
+
   return (
-    <div className="app-container">
-      <button className="button">Hello World</button>
+    <div>
+      <button>Hello World</button>
     </div>
   );
 };
