@@ -120,10 +120,10 @@ export const {
     }
   },
   media: {
-    bp1: `@media (min-width: 520px)`,
-    bp2: `@media (min-width: 900px)`,
-    bp3: `@media (min-width: 1200px)`,
-    bp4: `@media (min-width: 1800px)`,
+    bp1: `(min-width: 520px)`,
+    bp2: `(min-width: 900px)`,
+    bp3: `(min-width: 1200px)`,
+    bp4: `(min-width: 1800px)`,
     motion: `@media (prefers-reduced-motion)`,
     hover: `@media (hover: hover)`,
     dark: `@media (prefers-color-scheme: dark)`,
