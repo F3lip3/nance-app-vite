@@ -3,7 +3,8 @@ import { globalCss } from '~/global/config/stitches.config';
 export const globalStyles = globalCss({
   '*': {
     fontFamily: '$system',
-    color: '$foreground'
+    color: '$foreground',
+    boxSizing: 'border-box'
   },
   body: {
     backgroundColor: '$background',

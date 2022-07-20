@@ -1,14 +1,13 @@
 import { Container } from '~/app/modules/SignIn/styles';
+import { Input } from '~/app/shared/components/Input';
 
 export const SignIn = () => {
   return (
-    <Container
-      size={{
-        '@initial': 'full',
-        '@bp2': 'md'
-      }}
-    >
+    <Container>
       <h1>Sign In</h1>
+      <form action="#" autoComplete="off">
+        <Input />
+      </form>
     </Container>
   );
 };
