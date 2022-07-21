@@ -18,5 +18,8 @@ export const globalStyles = globalCss({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center'
+  },
+  'input[type=password]::-ms-reveal, input[type=password]::-ms-clear': {
+    display: 'none'
   }
 });

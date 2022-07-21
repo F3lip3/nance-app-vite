@@ -18,6 +18,7 @@ export const {
       primary: '#0F484F',
       secondary: '#3febc9',
       foreground: '#f6f6f8',
+      outline: 'hsl(168, 81%, 58%, 0.09)',
 
       blue: '#2483c4',
       gray: '#696a6c',

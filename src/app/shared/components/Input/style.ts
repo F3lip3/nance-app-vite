@@ -1,22 +1,48 @@
 import * as LabelPrimitive from '@radix-ui/react-label';
-import { styled } from '~/global/config/stitches.config';
+import { FiEye, FiMail, FiPlus, FiSearch, FiUser } from 'react-icons/fi';
+import { css, styled } from '~/global/config/stitches.config';
+
+const IconStyles = css({
+  cursor: 'default',
+  fontSize: '$xl2',
+  stroke: '$gray800'
+});
 
 export const FormControl = styled('div', {
+  alignItems: 'center',
   backgroundColor: '$fields',
+  border: '2px solid $fields',
   borderRadius: '$lg',
   cursor: 'text',
   display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
+  flexDirection: 'row',
   height: '64px',
-  padding: '$4 $6 $0 $6',
-  position: 'relative',
-  // width: '$md',
+  padding: '$0 $6 0 $6',
 
+  '&:focus-within': {
+    border: '2px solid $secondary',
+    outline: '5px solid $outline'
+  },
   '&:focus-within span': {
     transform: 'translate(0, -20px) scale(0.8)',
-    color: '$gray900'
+    color: '$secondary'
   }
+});
+
+export const IconAdd = styled(FiPlus, IconStyles);
+export const IconEmail = styled(FiMail, IconStyles);
+export const IconPassword = styled(FiEye, IconStyles);
+export const IconSearch = styled(FiSearch, IconStyles);
+export const IconUser = styled(FiUser, IconStyles);
+
+export const InnerBox = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  flex: '1 1 auto',
+  height: '100%',
+  justifyContent: 'center',
+  paddingTop: '$4',
+  position: 'relative'
 });
 
 export const Input = styled('input', {
@@ -41,7 +67,7 @@ export const Label = styled(LabelPrimitive.Root, {
   variants: {
     state: {
       empty: {
-        color: '$gray600',
+        color: '$gray800',
         transform: 'translate(0, -8px) scale(1)'
       },
       filled: {

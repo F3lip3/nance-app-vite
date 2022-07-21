@@ -1,11 +1,23 @@
-import { FocusEvent, useCallback, useRef, useState } from 'react';
+import React, { FocusEvent, useCallback, useRef, useState } from 'react';
 import {
   FormControl,
+  IconAdd,
+  IconEmail,
+  IconPassword,
+  IconSearch,
+  IconUser,
+  InnerBox,
   Input as InputField,
   Label
 } from '~/app/shared/components/Input/style';
 
-export const Input = () => {
+type InputProps = React.HTMLProps<HTMLInputElement> & {
+  id: string;
+  label: string;
+  icon?: 'add' | 'email' | 'password' | 'search' | 'user';
+};
+
+export const Input: React.FC<InputProps> = ({ icon, label, ...props }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [labelState, setLabelState] = useState<'filled' | 'empty'>('empty');
 
@@ -19,17 +31,22 @@ export const Input = () => {
 
   return (
     <FormControl onClick={handleFocus}>
-      <Label htmlFor="email" state={labelState}>
-        Email
-      </Label>
-      <InputField
-        id="email"
-        type="email"
-        onBlur={handleInputBlur}
-        placeholder=""
-        role="presentation"
-        ref={inputRef}
-      />
+      <InnerBox>
+        <Label htmlFor={props.id} state={labelState}>
+          {label}
+        </Label>
+        <InputField
+          {...props}
+          onBlur={handleInputBlur}
+          placeholder=""
+          ref={inputRef}
+        />
+      </InnerBox>
+      {icon == 'add' && <IconAdd />}
+      {icon == 'email' && <IconEmail />}
+      {icon == 'password' && <IconPassword />}
+      {icon == 'search' && <IconSearch />}
+      {icon == 'user' && <IconUser />}
     </FormControl>
   );
 };

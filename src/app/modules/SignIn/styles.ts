@@ -8,3 +8,9 @@ export const Container = styled('div', {
   width: '$full',
   padding: '$4'
 });
+
+export const Form = styled('form', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$3'
+});
