@@ -1,8 +1,7 @@
 import * as LabelPrimitive from '@radix-ui/react-label';
-import { FiEye, FiMail, FiPlus, FiSearch, FiUser } from 'react-icons/fi';
 import { css, styled } from '~/global/config/stitches.config';
 
-const IconStyles = css({
+export const IconStyles = css({
   cursor: 'default',
   fontSize: '$xl2',
   stroke: '$gray800'
@@ -28,12 +27,6 @@ export const FormControl = styled('div', {
     color: '$secondary'
   }
 });
-
-export const IconAdd = styled(FiPlus, IconStyles);
-export const IconEmail = styled(FiMail, IconStyles);
-export const IconPassword = styled(FiEye, IconStyles);
-export const IconSearch = styled(FiSearch, IconStyles);
-export const IconUser = styled(FiUser, IconStyles);
 
 export const InnerBox = styled('div', {
   display: 'flex',

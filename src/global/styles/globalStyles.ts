@@ -21,5 +21,12 @@ export const globalStyles = globalCss({
   },
   'input[type=password]::-ms-reveal, input[type=password]::-ms-clear': {
     display: 'none'
+  },
+  'input:-internal-autofill-selected': {
+    appearance: 'auto !important',
+    backgroundColor: '$primary !important',
+    color: 'white !important',
+    '-webkit-box-shadow': '0 0 0 30px #121415 inset !important',
+    '-webkit-text-fill-color': 'white !important'
   }
 });
