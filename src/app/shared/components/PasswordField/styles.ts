@@ -1,18 +1,24 @@
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { css, styled } from '~/global/config/stitches.config';
+import { GenericField } from '~/app/shared/components/GenericField';
+import { IconStyles } from '~/app/shared/components/GenericField/style';
+import { styled } from '~/global/config/stitches.config';
 
-export const PasswordIconStyles = css({
-  cursor: 'pointer',
-  fontSize: '$xl2',
-  stroke: '$gray800'
-});
+export const ShowPasswordIcon = styled(FiEye, IconStyles);
+export const HidePasswordIcon = styled(FiEyeOff, IconStyles);
 
-export const ShowPasswordIcon = styled(FiEye, {
-  ...PasswordIconStyles,
-  cursor: 'pointer'
-});
-
-export const HidePasswordIcon = styled(FiEyeOff, {
-  ...PasswordIconStyles,
-  cursor: 'pointer'
+export const PasswordField = styled(GenericField, {
+  variants: {
+    display: {
+      text: {
+        fontFamily: '$system'
+      },
+      password: {
+        fontFamily: '$password',
+        letterSpacing: '$1'
+      }
+    }
+  },
+  defaultVariants: {
+    display: 'password'
+  }
 });

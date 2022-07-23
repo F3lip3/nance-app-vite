@@ -4,48 +4,49 @@ import { css, styled } from '~/global/config/stitches.config';
 export const IconStyles = css({
   cursor: 'default',
   fontSize: '$xl2',
-  stroke: '$gray800'
+  position: 'absolute',
+  right: '$6',
+  stroke: '$gray800',
+  variants: {
+    cursor: {
+      default: { cursor: 'default' },
+      pointer: { cursor: 'pointer' }
+    }
+  },
+  defaultVariants: {
+    cursor: 'default'
+  }
 });
 
 export const FormControl = styled('div', {
   alignItems: 'center',
-  backgroundColor: '$fields',
-  border: '2px solid $fields',
-  borderRadius: '$lg',
   cursor: 'text',
   display: 'flex',
   flexDirection: 'row',
-  height: '64px',
-  padding: '$0 $6 0 $6',
+  position: 'relative',
 
-  '&:focus-within': {
+  '&:focus-within input': {
     border: '2px solid $secondary',
     outline: '5px solid $outline'
   },
   '&:focus-within span': {
-    transform: 'translate(0, -20px) scale(0.8)',
+    transform: 'translate(calc($space-6 + 0.1rem), -$space-3) scale(0.8)',
     color: '$secondary'
   }
-});
-
-export const InnerBox = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  flex: '1 1 auto',
-  height: '100%',
-  justifyContent: 'center',
-  paddingTop: '$4',
-  position: 'relative'
 });
 
 export const Input = styled('input', {
   all: 'unset',
   alignItems: 'center',
+  backgroundColor: '$fields',
+  border: '2px solid $fields',
   color: 'white',
   display: 'inline-flex',
   fontSize: '$lg',
+  height: '$xs5',
   justifyContent: 'center',
   lineHeight: 1,
+  padding: '$6 $6 $2 $6',
   width: '$full'
 });
 
@@ -61,11 +62,11 @@ export const Label = styled(LabelPrimitive.Root, {
     state: {
       empty: {
         color: '$gray800',
-        transform: 'translate(0, -8px) scale(1)'
+        transform: 'translate(calc($space-6 + 0.1rem), 0) scale(1)'
       },
       filled: {
         color: '$gray900',
-        transform: 'translate(0, -20px) scale(0.8)'
+        transform: 'translate(calc($space-6 + 0.1rem), -$space-3) scale(0.8)'
       }
     }
   },

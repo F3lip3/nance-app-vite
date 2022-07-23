@@ -72,7 +72,6 @@ export const {
     sizes: {
       0: '0rem',
       none: ' none',
-      xs: ' 20rem',
       sm: ' 24rem',
       md: ' 28rem',
       lg: ' 32rem',
@@ -83,6 +82,12 @@ export const {
       xl5: ' 64rem',
       xl6: ' 72rem',
       xl7: ' 80rem',
+      xs: ' 20rem',
+      xs1: ' 16rem',
+      xs2: ' 12rem',
+      xs3: ' 8rem',
+      xs4: ' 4rem',
+      xs5: ' 2rem',
       full: '100%'
     },
     fontSizes: {
@@ -117,7 +122,20 @@ export const {
       max: '999'
     },
     fonts: {
+      password: 'password',
+      urbanist: 'Urbanist',
       system: 'system-ui'
+    },
+    letterSpacings: {
+      0: '0px',
+      1: '0.25rem',
+      2: '0.5rem',
+      3: '0.75rem',
+      4: '1rem',
+      5: '1.25rem',
+      6: '1.5rem',
+      7: '1.75rem',
+      8: '2rem'
     }
   },
   media: {

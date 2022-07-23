@@ -1,30 +1,28 @@
 import React, { useCallback, useState } from 'react';
-import {
-  GenericField,
-  GenericFieldProps
-} from '~/app/shared/components/GenericField';
+import { GenericFieldProps } from '~/app/shared/components/GenericField';
 import {
   HidePasswordIcon,
+  PasswordField as PasswordInput,
   ShowPasswordIcon
 } from '~/app/shared/components/PasswordField/styles';
 
 type PasswordFieldProps = Omit<GenericFieldProps, 'children' | 'type'>;
 
 export const PasswordField: React.FC<PasswordFieldProps> = props => {
-  const [inputType, setInputType] = useState('password');
+  const [inputType, setInputType] = useState<'password' | 'text'>('password');
 
   const handlePasswordVisibility = useCallback(() => {
     setInputType(current => (current === 'password' ? 'text' : 'password'));
   }, []);
 
   return (
-    <GenericField {...props} type="password">
+    <PasswordInput {...props} type="text" display={inputType}>
       {inputType === 'password' && (
-        <ShowPasswordIcon onClick={handlePasswordVisibility} />
+        <ShowPasswordIcon onClick={handlePasswordVisibility} cursor="pointer" />
       )}
       {inputType === 'text' && (
-        <HidePasswordIcon onClick={handlePasswordVisibility} />
+        <HidePasswordIcon onClick={handlePasswordVisibility} cursor="pointer" />
       )}
-    </GenericField>
+    </PasswordInput>
   );
 };

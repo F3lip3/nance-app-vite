@@ -1,15 +1,16 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   FormControl,
-  InnerBox,
-  Input as InputField,
+  Input,
   Label
 } from '~/app/shared/components/GenericField/style';
 
-export type GenericFieldProps = React.HTMLProps<HTMLInputElement> & {
+export type GenericFieldProps = {
   id: string;
   name: string;
   label: string;
+  type?: React.HTMLInputTypeAttribute;
+  children?: React.ReactNode;
 };
 
 export const GenericField: React.FC<GenericFieldProps> = ({
@@ -17,12 +18,7 @@ export const GenericField: React.FC<GenericFieldProps> = ({
   label,
   ...props
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [labelState, setLabelState] = useState<'filled' | 'empty'>('empty');
-
-  const handleFocus = useCallback(() => {
-    inputRef.current?.focus();
-  }, []);
 
   const handleValueChange = useCallback(
     (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,18 +28,11 @@ export const GenericField: React.FC<GenericFieldProps> = ({
   );
 
   return (
-    <FormControl onClick={handleFocus}>
-      <InnerBox>
-        <Label htmlFor={props.id} state={labelState}>
-          {label}
-        </Label>
-        <InputField
-          {...props}
-          onChange={handleValueChange}
-          placeholder=""
-          ref={inputRef}
-        />
-      </InnerBox>
+    <FormControl>
+      <Label htmlFor={props.id} state={labelState}>
+        {label}
+      </Label>
+      <Input onChange={handleValueChange} placeholder="" {...props} />
       {children}
     </FormControl>
   );

@@ -14,3 +14,7 @@ export const Form = styled('form', {
   flexDirection: 'column',
   gap: '$3'
 });
+
+export const Title = styled('h1', {
+  fontFamily: '$urbanist'
+});
