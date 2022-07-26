@@ -1,17 +1,14 @@
-import { Container, Form, Title } from '~/app/modules/SignIn/styles';
-import { EmailField } from '~/app/shared/components/EmailField';
-import { PasswordField } from '~/app/shared/components/PasswordField';
-import { TextField } from '~/app/shared/components/TextField';
+import { SignInContainer } from '~/app/modules/SignIn/containers/SignInContainer';
+import { SignInFormProvider } from '~/app/modules/SignIn/forms/SignInForm/useSignInForm';
+import { Container, Title } from '~/app/modules/SignIn/styles';
 
 export const SignIn = () => {
   return (
     <Container>
       <Title>Sign In</Title>
-      <Form action="#" autoComplete="off">
-        <TextField id="name" name="name" label="Nome" icon="user" />
-        <EmailField id="email" name="email" label="Email" />
-        <PasswordField id="password" name="password" label="Senha" />
-      </Form>
+      <SignInFormProvider>
+        <SignInContainer />
+      </SignInFormProvider>
     </Container>
   );
 };

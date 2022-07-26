@@ -1,5 +1,5 @@
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { GenericField } from '~/app/shared/components/GenericField';
+import GenericField from '~/app/shared/components/GenericField';
 import { IconStyles } from '~/app/shared/components/GenericField/style';
 import { styled } from '~/global/config/stitches.config';
 

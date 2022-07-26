@@ -9,12 +9,6 @@ export const Container = styled('div', {
   padding: '$4'
 });
 
-export const Form = styled('form', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '$3'
-});
-
 export const Title = styled('h1', {
   fontFamily: '$urbanist'
 });

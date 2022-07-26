@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { forwardRef, useCallback, useState } from 'react';
 import { GenericFieldProps } from '~/app/shared/components/GenericField';
 import {
   HidePasswordIcon,
@@ -8,7 +8,10 @@ import {
 
 type PasswordFieldProps = Omit<GenericFieldProps, 'children' | 'type'>;
 
-export const PasswordField: React.FC<PasswordFieldProps> = props => {
+const PasswordField: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  PasswordFieldProps
+> = (props, ref) => {
   const [inputType, setInputType] = useState<'password' | 'text'>('password');
 
   const handlePasswordVisibility = useCallback(() => {
@@ -16,7 +19,7 @@ export const PasswordField: React.FC<PasswordFieldProps> = props => {
   }, []);
 
   return (
-    <PasswordInput {...props} type="text" display={inputType}>
+    <PasswordInput {...props} ref={ref} type="text" display={inputType}>
       {inputType === 'password' && (
         <ShowPasswordIcon onClick={handlePasswordVisibility} cursor="pointer" />
       )}
@@ -26,3 +29,5 @@ export const PasswordField: React.FC<PasswordFieldProps> = props => {
     </PasswordInput>
   );
 };
+
+export default forwardRef(PasswordField);

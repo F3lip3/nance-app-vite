@@ -1,6 +1,5 @@
 import React from 'react';
-import {
-  GenericField,
+import GenericField, {
   GenericFieldProps
 } from '~/app/shared/components/GenericField';
 import {

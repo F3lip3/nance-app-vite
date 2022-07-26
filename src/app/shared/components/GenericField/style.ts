@@ -19,20 +19,50 @@ export const IconStyles = css({
 });
 
 export const FormControl = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+
+  variants: {
+    state: {
+      valid: {
+        color: 'white',
+        '&:focus-within input': {
+          border: '2px solid $secondary',
+          outline: '5px solid $outline'
+        },
+        '&:focus-within span': {
+          transform: 'translate(calc($space-6 + 0.1rem), -$space-3) scale(0.8)',
+          color: '$secondary'
+        }
+      },
+      error: {
+        color: '$orange',
+        '& input': {
+          border: '2px solid $orange',
+          outline: '5px solid $orangeOutline'
+        },
+        '& span': {
+          transform: 'translate(calc($space-6 + 0.1rem), -$space-3) scale(0.8)',
+          color: '$orange'
+        }
+      }
+    }
+  },
+  defaultVariants: {
+    state: 'valid'
+  }
+});
+
+export const HelperText = styled('div', {
+  color: 'inherit',
+  padding: '$2 $1 $3'
+});
+
+export const InnerContent = styled('div', {
   alignItems: 'center',
-  cursor: 'text',
   display: 'flex',
   flexDirection: 'row',
-  position: 'relative',
-
-  '&:focus-within input': {
-    border: '2px solid $secondary',
-    outline: '5px solid $outline'
-  },
-  '&:focus-within span': {
-    transform: 'translate(calc($space-6 + 0.1rem), -$space-3) scale(0.8)',
-    color: '$secondary'
-  }
+  position: 'relative'
 });
 
 export const Input = styled('input', {
@@ -40,7 +70,6 @@ export const Input = styled('input', {
   alignItems: 'center',
   backgroundColor: '$fields',
   border: '2px solid $fields',
-  color: 'white',
   display: 'inline-flex',
   fontSize: '$lg',
   height: '$xs5',

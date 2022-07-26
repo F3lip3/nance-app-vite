@@ -24,6 +24,7 @@ export const {
       gray: '#696a6c',
       green: '#4C7b54',
       orange: '#dd5f1e',
+      orangeOutline: 'hsl(20, 76%, 49%, 0.15)',
       purple100: '#806dd2',
       purple200: '#6746ed',
 
