@@ -62,6 +62,9 @@ const GenericField: React.ForwardRefRenderFunction<
             if (onBlur) onBlur(e);
             handleOnBlur(e);
           }}
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
         />
         {children}
       </InnerContent>

@@ -22,13 +22,13 @@ export const globalStyles = globalCss({
   'input[type=password]::-ms-reveal, input[type=password]::-ms-clear': {
     display: 'none'
   },
-  'input:-internal-autofill-selected': {
-    appearance: 'auto !important',
-    backgroundColor: '$primary !important',
-    color: 'white !important',
-    '-webkit-box-shadow': '0 0 0 40px #121415 inset !important',
-    '-webkit-text-fill-color': 'white !important'
-  },
+  'input:-webkit-autofill,input:-webkit-autofill:hover, input:-webkit-autofill:focus,textarea:-webkit-autofill,textarea:-webkit-autofill:hover,textarea:-webkit-autofill:focus,select:-webkit-autofill,select:-webkit-autofill:hover,select:-webkit-autofill:focus':
+    {
+      border: '2px solid #121415',
+      '-webkit-text-fill-color': '#f6f6f8',
+      '-webkit-box-shadow': '0 0 0px 1000px #121415 inset',
+      transition: 'background-color 5000s ease-in-out 0s'
+    },
   '@font-face': [
     {
       fontFamily: 'password',

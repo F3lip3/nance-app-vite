@@ -70,6 +70,8 @@ export const Input = styled('input', {
   alignItems: 'center',
   backgroundColor: '$fields',
   border: '2px solid $fields',
+  borderRadius: '$xl',
+  color: '$foreground',
   display: 'inline-flex',
   fontSize: '$lg',
   height: '$xs5',
