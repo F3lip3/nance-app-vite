@@ -16,6 +16,7 @@ import {
 } from 'react-hook-form';
 import { SignInFormFields } from '~/app/modules/SignIn/forms/SignInForm/interfaces/SignInFormFields';
 import { SignInFormSchema } from '~/app/modules/SignIn/forms/SignInForm/validations/SignInFormSchema';
+import { useToast } from '~/app/shared/hooks/useToast';
 import { useYupValidationResolver } from '~/app/shared/hooks/useYupValidationResolver';
 import { SignInResponse } from '~/app/shared/interfaces/User';
 import api from '~/app/shared/services/api';
@@ -45,6 +46,7 @@ const SignInFormContext = createContext<SignInFormContextData>(
 
 const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
   const resolver = useCallback(useYupValidationResolver(SignInFormSchema), []);
+
   const {
     clearErrors,
     control,
@@ -62,12 +64,14 @@ const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
     reValidateMode: 'onChange'
   });
 
+  const { addToast } = useToast();
+
   const signIn = useMutation(async (signInData: SignInFormFields) => {
     try {
       const response = await api.post<SignInResponse>('auth/login', signInData);
       console.info(response.data);
     } catch (error: any) {
-      console.error(error.code);
+      addToast({ title: error.message });
     }
   });
 

@@ -25,14 +25,7 @@ const GenericField: React.ForwardRefRenderFunction<
   const [fieldState, setFieldState] = useState<'error' | 'valid'>('valid');
   const [labelState, setLabelState] = useState<'filled' | 'empty'>('empty');
 
-  const handleOnBlur = useCallback(
-    (evt: React.ChangeEvent<HTMLInputElement>) => {
-      setLabelState(evt.target.value ? 'filled' : 'empty');
-    },
-    []
-  );
-
-  const handleOnChange = useCallback(
+  const handleChange = useCallback(
     (evt: React.ChangeEvent<HTMLInputElement>) => {
       setLabelState(evt.target.value ? 'filled' : 'empty');
     },
@@ -56,11 +49,11 @@ const GenericField: React.ForwardRefRenderFunction<
           title={label}
           onChange={e => {
             if (onChange) onChange(e);
-            handleOnChange(e);
+            handleChange(e);
           }}
           onBlur={e => {
             if (onBlur) onBlur(e);
-            handleOnBlur(e);
+            handleChange(e);
           }}
           autoComplete="off"
           autoCorrect="off"
