@@ -1,3 +1,4 @@
+import { useMutation } from '@tanstack/react-query';
 import React, { createContext, useCallback, useContext } from 'react';
 import {
   Control,
@@ -16,6 +17,8 @@ import {
 import { SignInFormFields } from '~/app/modules/SignIn/forms/SignInForm/interfaces/SignInFormFields';
 import { SignInFormSchema } from '~/app/modules/SignIn/forms/SignInForm/validations/SignInFormSchema';
 import { useYupValidationResolver } from '~/app/shared/hooks/useYupValidationResolver';
+import { SignInResponse } from '~/app/shared/interfaces/User';
+import api from '~/app/shared/services/api';
 
 interface SignInFormContextData {
   clearErrors: UseFormClearErrors<SignInFormFields>;
@@ -29,8 +32,7 @@ interface SignInFormContextData {
   setValue: UseFormSetValue<SignInFormFields>;
   trigger: UseFormTrigger<SignInFormFields>;
   watch: UseFormWatch<SignInFormFields>;
-  // submitForm: (offerDataBeforeUpdate?: IOffer) => void
-  // sendOffer: UseMutationResult<void, unknown, ICreateOrUpdateOffer, unknown>
+  submitForm: () => void;
 }
 
 interface SignInFormProps {
@@ -60,6 +62,21 @@ const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
     reValidateMode: 'onChange'
   });
 
+  const signIn = useMutation(async (signInData: SignInFormFields) => {
+    try {
+      const response = await api.post<SignInResponse>('auth/login', signInData);
+      console.info(response.data);
+    } catch (error: any) {
+      console.error(error.code);
+    }
+  });
+
+  const submitForm = async () => {
+    await handleSubmit(async data => {
+      await signIn.mutateAsync(data);
+    })();
+  };
+
   return (
     <SignInFormContext.Provider
       value={{
@@ -72,6 +89,7 @@ const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
         reset,
         setError,
         setValue,
+        submitForm,
         trigger,
         watch
       }}

@@ -21,6 +21,7 @@ export const IconStyles = css({
 export const FormControl = styled('div', {
   display: 'flex',
   flexDirection: 'column',
+  width: '$full',
 
   variants: {
     state: {
