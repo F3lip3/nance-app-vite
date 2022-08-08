@@ -22,7 +22,7 @@ const swipeOut = keyframes({
 export const IconClose = styled(FiX, {
   cursor: 'pointer',
   fontSize: '$xl',
-  stroke: '$gray800'
+  stroke: '$gray200'
 });
 
 export const ToastAction = styled(ToastPrimitive.Action, {
@@ -75,14 +75,20 @@ export const ToastButton = styled('button', {
 
 export const ToastClose = styled(ToastPrimitive.Close, {
   border: 'none',
-  backgroundColor: 'white'
+  backgroundColor: 'transparent',
+  variants: {
+    type: {
+      default: { gridRow: '1/1' },
+      merged: { gridRow: '1/3' }
+    }
+  },
+  defaultVariants: {
+    type: 'default'
+  }
 });
 
 export const ToastContainer = styled(ToastPrimitive.Root, {
-  backgroundColor: 'white',
   borderRadius: 6,
-  boxShadow:
-    'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   padding: 15,
   display: 'grid',
   gridTemplateAreas: '"title action" "description action"',
@@ -107,23 +113,34 @@ export const ToastContainer = styled(ToastPrimitive.Root, {
     '&[data-swipe="end"]': {
       animation: `${swipeOut} 100ms ease-out`
     }
+  },
+
+  variants: {
+    variant: {
+      error: { backgroundColor: '$errorBox' },
+      info: { backgroundColor: '$blue' },
+      success: { backgroundColor: '$success' }
+    }
+  },
+  defaultVariants: {
+    variant: 'success'
   }
 });
 
 export const ToastDescription = styled(ToastPrimitive.Description, {
+  color: '$gray700',
+  fontSize: '$sm',
+  fontWeight: 400,
   gridArea: 'description',
-  margin: 0,
-  color: '$gray400',
-  fontSize: 13,
-  lineHeight: 1.3
+  lineHeight: 1.3,
+  margin: 0
 });
 
 export const ToastTitle = styled(ToastPrimitive.Title, {
-  gridArea: 'title',
-  marginBottom: 5,
+  color: '$foreground',
+  fontSize: '$base',
   fontWeight: 500,
-  color: '$green',
-  fontSize: 15
+  gridArea: 'title'
 });
 
 export const ToastViewport = styled(ToastPrimitive.Viewport, {

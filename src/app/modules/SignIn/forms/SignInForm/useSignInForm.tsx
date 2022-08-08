@@ -16,6 +16,7 @@ import {
 } from 'react-hook-form';
 import { SignInFormFields } from '~/app/modules/SignIn/forms/SignInForm/interfaces/SignInFormFields';
 import { SignInFormSchema } from '~/app/modules/SignIn/forms/SignInForm/validations/SignInFormSchema';
+import { mapError } from '~/app/shared/helpers/errors';
 import { useToast } from '~/app/shared/hooks/useToast';
 import { useYupValidationResolver } from '~/app/shared/hooks/useYupValidationResolver';
 import { SignInResponse } from '~/app/shared/interfaces/User';
@@ -71,7 +72,8 @@ const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
       const response = await api.post<SignInResponse>('auth/login', signInData);
       console.info(response.data);
     } catch (error: any) {
-      addToast({ title: error.message });
+      console.error(error);
+      addToast({ ...mapError(error) });
     }
   });
 

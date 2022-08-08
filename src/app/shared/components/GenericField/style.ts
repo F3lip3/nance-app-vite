@@ -37,14 +37,14 @@ export const FormControl = styled('div', {
         }
       },
       error: {
-        color: '$orange',
+        color: '$error',
         '& input': {
-          border: '2px solid $orange',
-          outline: '5px solid $orangeOutline'
+          border: '2px solid $error',
+          outline: '5px solid $errorOutline'
         },
         '& span': {
           transform: 'translate(calc($space-6 + 0.1rem), -$space-3) scale(0.8)',
-          color: '$orange'
+          color: '$error'
         }
       }
     }

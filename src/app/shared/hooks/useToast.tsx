@@ -4,7 +4,10 @@ import { v4 as uuid } from 'uuid';
 import { Toast, ToastProps } from '~/app/shared/components/Toast';
 import { ToastViewport } from '~/app/shared/components/Toast/styles';
 
-type AddToastProps = Pick<ToastProps, 'title' | 'description' | 'action'>;
+type AddToastProps = Pick<
+  ToastProps,
+  'message' | 'description' | 'action' | 'variant'
+>;
 
 interface ToastContextData {
   addToast: (toast: AddToastProps) => void;
@@ -32,14 +35,7 @@ const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
       <ToastPrimitive.Provider swipeDirection="right">
         {children}
         {queue.map(item => (
-          <Toast
-            key={item.code}
-            code={item.code}
-            title={item.title}
-            description={item.description}
-            action={item.action}
-            onClose={onClose}
-          />
+          <Toast key={item.code} onClose={onClose} {...item} />
         ))}
         <ToastViewport />
       </ToastPrimitive.Provider>

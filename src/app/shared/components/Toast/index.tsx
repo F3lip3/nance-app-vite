@@ -10,9 +10,10 @@ import {
 
 export type ToastProps = {
   code: string;
-  title: string;
+  message: string;
   description?: string;
   action?: string;
+  variant?: 'error' | 'info' | 'success';
 };
 
 type InnerToastProps = ToastProps & {
@@ -21,28 +22,30 @@ type InnerToastProps = ToastProps & {
 
 export const Toast: React.FC<InnerToastProps> = ({
   code,
-  title,
+  message,
   description,
   action,
+  variant,
   onClose
 }) => {
-  console.info('code:', code);
-
   const handleClose = () => {
     onClose(code);
   };
 
   return (
     <>
-      <ToastContainer onOpenChange={handleClose}>
-        <ToastTitle>{title}</ToastTitle>
+      <ToastContainer onOpenChange={handleClose} variant={variant ?? 'info'}>
+        <ToastTitle>{message}</ToastTitle>
         {description && <ToastDescription>{description}</ToastDescription>}
         {action && (
           <ToastButton variant="green" size="small">
             {action}
           </ToastButton>
         )}
-        <ToastClose aria-label="Close">
+        <ToastClose
+          aria-label="Close"
+          type={description ? 'merged' : 'default'}
+        >
           <IconClose />
         </ToastClose>
       </ToastContainer>

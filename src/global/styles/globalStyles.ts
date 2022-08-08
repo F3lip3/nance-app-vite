@@ -53,6 +53,13 @@ export const globalStyles = globalCss({
     {
       fontFamily: 'Urbanist',
       fontStyle: 'normal',
+      fontWeight: 500,
+      src: `url(./fonts/urbanist/woff2/Urbanist-SemiBold.woff2) format('woff2'),
+            url(./fonts/urbanist/ttf/Urbanist-SemiBold.ttf) format('truetype')`
+    },
+    {
+      fontFamily: 'Urbanist',
+      fontStyle: 'normal',
       fontWeight: 700,
       src: `url(./fonts/urbanist/woff2/Urbanist-Bold.woff2) format('woff2'),
             url(./fonts/urbanist/ttf/Urbanist-Bold.ttf) format('truetype')`

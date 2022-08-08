@@ -22,9 +22,10 @@ export const {
 
       blue: '#2483c4',
       gray: '#696a6c',
-      green: '#4C7b54',
-      orange: '#dd5f1e',
-      orangeOutline: 'hsl(20, 76%, 49%, 0.15)',
+      success: '#4C7b54',
+      error: '#dd5f1e',
+      errorBox: '#722b2b',
+      errorOutline: 'hsl(20, 76%, 49%, 0.15)',
       purple100: '#806dd2',
       purple200: '#6746ed',
 
