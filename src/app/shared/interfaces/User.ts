@@ -8,7 +8,12 @@ export interface User {
   updated_at: Date;
 }
 
-export interface SignInResponse {
+export interface SignInProps {
+  email: string;
+  password: string;
+}
+
+export interface Session {
   access_token: string;
   user: User;
 }

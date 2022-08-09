@@ -1,4 +1,3 @@
-import { useMutation } from '@tanstack/react-query';
 import React, { createContext, useCallback, useContext } from 'react';
 import {
   Control,
@@ -16,11 +15,8 @@ import {
 } from 'react-hook-form';
 import { SignInFormFields } from '~/app/modules/SignIn/forms/SignInForm/interfaces/SignInFormFields';
 import { SignInFormSchema } from '~/app/modules/SignIn/forms/SignInForm/validations/SignInFormSchema';
-import { mapError } from '~/app/shared/helpers/errors';
-import { useToast } from '~/app/shared/hooks/useToast';
-import { useYupValidationResolver } from '~/app/shared/hooks/useYupValidationResolver';
-import { SignInResponse } from '~/app/shared/interfaces/User';
-import api from '~/app/shared/services/api';
+import { useYupValidationResolver } from '~/app/shared/helpers/validationResolvers';
+import { useAuth } from '~/app/shared/hooks/useAuth';
 
 interface SignInFormContextData {
   clearErrors: UseFormClearErrors<SignInFormFields>;
@@ -46,6 +42,7 @@ const SignInFormContext = createContext<SignInFormContextData>(
 );
 
 const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
+  const { signIn } = useAuth();
   const resolver = useCallback(useYupValidationResolver(SignInFormSchema), []);
 
   const {
@@ -65,21 +62,9 @@ const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
     reValidateMode: 'onChange'
   });
 
-  const { addToast } = useToast();
-
-  const signIn = useMutation(async (signInData: SignInFormFields) => {
-    try {
-      const response = await api.post<SignInResponse>('auth/login', signInData);
-      console.info(response.data);
-    } catch (error: any) {
-      console.error(error);
-      addToast({ ...mapError(error) });
-    }
-  });
-
   const submitForm = async () => {
     await handleSubmit(async data => {
-      await signIn.mutateAsync(data);
+      await signIn(data);
     })();
   };
 
