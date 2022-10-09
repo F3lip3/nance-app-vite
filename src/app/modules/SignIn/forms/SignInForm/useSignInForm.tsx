@@ -13,6 +13,7 @@ import {
   UseFormTrigger,
   UseFormWatch
 } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { SignInFormFields } from '~/app/modules/SignIn/forms/SignInForm/interfaces/SignInFormFields';
 import { SignInFormSchema } from '~/app/modules/SignIn/forms/SignInForm/validations/SignInFormSchema';
 import { useYupValidationResolver } from '~/app/shared/helpers/validationResolvers';
@@ -42,6 +43,7 @@ const SignInFormContext = createContext<SignInFormContextData>(
 );
 
 const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
+  const navigate = useNavigate();
   const { signIn } = useAuth();
   const resolver = useCallback(useYupValidationResolver(SignInFormSchema), []);
 
@@ -65,6 +67,7 @@ const SignInFormProvider: React.FC<SignInFormProps> = ({ children }) => {
   const submitForm = async () => {
     await handleSubmit(async data => {
       await signIn(data);
+      navigate('/dashboard', { replace: true });
     })();
   };
 
